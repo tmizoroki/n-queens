@@ -41,6 +41,12 @@
       return this.hasAnyRowConflicts() || this.hasAnyColConflicts();
     },
 
+    hasAnyDiagonalConflictsAt: function (rowIndex, colIndex, coordinates) {
+      return _.some(coordinates, function(coordinate) {
+        return Math.abs(rowIndex - coordinate[0]) === Math.abs(colIndex - coordinate[1]);
+      });
+    },
+
     hasAnyQueenConflictsOn: function(rowIndex, colIndex) {
       return (
         // this.hasRowConflictAt(rowIndex) ||
